@@ -8,6 +8,8 @@ Arquivo 1:
 
 <p align="center">
   <a href="" rel="noopener">
-    <img src="https://github.com/owshq-academy/ws-mds-na-pratica/blob/main/image/0_roadmap.png" alt="Project logo">
+    <img src="https://github.com/diegomendesbrasil/gavb/blob/master/image/twiiter_arquitetura_final.png" alt="Project logo">
  </a>
 </p>
+
+
