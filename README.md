@@ -27,10 +27,10 @@ Para o desafio 2 utilizei databricks para execução do código python e azure s
 
 1. Acessar a pasta scripts e executar a criação das tabelas SQL e também o script de criação de procedure
 2. Realizar o clone desse projeto no databricks e executar na seguinte ordem:
-  2.1. Script 00_import_files.py
-    Suba os arquivos para o repositório do databricks no dbfs "/dbfs/FileStore"
-    Execute o script que realizará a importação dos arquivos e carga no banco de dados
-Abaixo está a organização do processo de execução desse item.
+  2.1. Script 00_import_files.py<b></b>
+    <b></b>Suba os arquivos para o repositório do databricks no dbfs "/dbfs/FileStore"<b></b>
+    <b></b>Execute o script que realizará a importação dos arquivos e carga no banco de dados<b></b>
+<b></b>Abaixo está a organização do processo de execução desse item.
     
  <p align="center">
   <a href="" rel="noopener">
@@ -38,9 +38,9 @@ Abaixo está a organização do processo de execução desse item.
  </a>
 </p>
 
-3. Script conect_api.py
+3. Script conect_api.py<b></b>
   Ao executar esse script você coletará os dados do twiiter com base na variável pre-estabelecida e a carga na tabela de twiites será realizada.
-A organização desse arquitetura ficou da seguinte maneira:
+<b></b>A organização desse arquitetura ficou da seguinte maneira:
 
    <p align="center">
   <a href="" rel="noopener">
