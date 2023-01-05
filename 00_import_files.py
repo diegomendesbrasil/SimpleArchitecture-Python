@@ -10,9 +10,9 @@ password = 'qI&9q9goY63d'
 
 # COMMAND ----------
 
-#!pip3 install openpyxl
-#!pip install xlrd
-#!pip3 install --upgrade pandas
+!pip3 install openpyxl
+!pip install xlrd
+!pip3 install --upgrade pandas
 
 # COMMAND ----------
 
@@ -27,10 +27,6 @@ path = '/dbfs/FileStore'
 
 files = os.listdir(path)
 df = pd.DataFrame()
-
-# COMMAND ----------
-
-df = pd.read_excel(path, engine= 'openpyxl')
 
 # COMMAND ----------
 
@@ -66,7 +62,11 @@ sparkDF.write\
 
 # COMMAND ----------
 
-
+exec_procedure = 'dbo.sp_exec_carga'
+driver_manager = spark._sc._gateway.jvm.java.sql.DriverManager
+connection = driver_manager.getConnection(urlgrava, user, password)
+connection.prepareCall(exec_procedure).execute()
+connection.close()
 
 # COMMAND ----------
 

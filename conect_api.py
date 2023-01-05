@@ -60,40 +60,31 @@ dflinhas = spark.read\
 
 # COMMAND ----------
 
-#TRANSFORMA EM LISTA O RESULTADO DA CONSULTA ANTERIOR
 Lista = dflinhas.values.tolist()
-Lista[0]
+for line in Lista:
+  tweets = []
+  try:
+      tso = TwitterSearchOrder() 
+      tso.set_keywords(['Boticário',line[0]]) 
+      tso.set_language('pt')
+      tso.set_include_entities(False)
 
-# COMMAND ----------
+      ts = TwitterSearch(
+          consumer_key = env_API_KEY,
+          consumer_secret = env_API_KEY_SECRET,
+          access_token = env_ACCESS_TOKEN,
+          access_token_secret = env_ACCESS_TOKEN_SECRET
+       )
 
-from TwitterSearch import *
-
-tweets = []
-try:
-    tso = TwitterSearchOrder() # create a TwitterSearchOrder object
-    tso.set_keywords(['Boticário','MAQUIAGEM']) # let's define all words we would like to have a look for
-    tso.set_language('pt') # we want to see German tweets only
-    tso.set_include_entities(False) # and don't give us all those entity information
-
-    # it's about time to create a TwitterSearch object with our secret tokens
-    ts = TwitterSearch(
-        consumer_key = env_API_KEY,
-        consumer_secret = env_API_KEY_SECRET,
-        access_token = env_ACCESS_TOKEN,
-        access_token_secret = env_ACCESS_TOKEN_SECRET
-     )
-
-     # this is where the fun actually starts :)
-    for tweet in ts.search_tweets_iterable(tso):
-        #criado dicionário para receber os valores
-        data = {
-                'User' : tweet['user']['screen_name'],
-                'Texto' : tweet['text']
-        } 
-        tweets.append(data)
-    df = pd.DataFrame(tweets)
-except TwitterSearchException as e: # take care of all those ugly errors if there are some
-    print(e)
+      for tweet in ts.search_tweets_iterable(tso):
+          data = {
+                  'User' : tweet['user']['screen_name'],
+                  'Texto' : tweet['text']
+          } 
+          tweets.append(data)
+      df = pd.DataFrame(tweets)
+  except TwitterSearchException as e: 
+      print(e)
 
 # COMMAND ----------
 
@@ -101,20 +92,16 @@ df.display()
 
 # COMMAND ----------
 
-qry_Suite = \
-"""
-select  
-	*
-from
-stg.stg_vendas
-"""
-
-
-TestCase = spark.read\
-.format('jdbc')\
-.option('url', url)\
-.option('query', qry_Suite)\
-.load().toPandas()
+sparkDF=spark.createDataFrame(df) 
+sparkDF.write\
+    .format("jdbc")\
+    .mode("overwrite")\
+    .option("truncate",True)\
+    .option("url", url)\
+    .option("dbtable", "consume.tab_twitterApi")\
+    .option("user", user)\
+    .option("password", password)\
+    .save()
 
 # COMMAND ----------
 
