@@ -2,10 +2,15 @@
 
 Este arquivo tem como objetivo auxiliá-lo na navegação pelos repositórios do projeto, tornando mais simples o entendimento do que foi criado para este processo. O repositório está organizado da seguinte forma:
 
-1. **Pasta Arquitetura:** Contém a apresentação da arquitetura proposta para implementação na empresa.
-2. **Pasta Scripts:** Contém os scripts SQL que devem ser executados para criar as tabelas e procedures relacionadas ao Desafio 2.
-3. **Pasta Imagens:** Contém as imagens usadas neste README.
-4. **Arquivos 00_import_files.py e connect_api.py:** Fazem parte dos artefatos do Projeto 2.
+1. **Pasta Arquitetura:** Contém a apresentação da arquitetura proposta para implementação na empresa com a cloud AWS.
+  Nessa arquitetura trago detalhes do que podemos utilizar desde a ingestão do dados até a camada de apresentação e governança.
+
+![image](https://github.com/diegomendesbrasil/SimpleArchitecture-Python/assets/50381758/0e51b05a-d18b-424d-be14-f63a07c2d045)
+
+3. 
+4. **Pasta Scripts:** Contém os scripts SQL que devem ser executados para criar as tabelas e procedures relacionadas ao Desafio 2.
+5. **Pasta Imagens:** Contém as imagens usadas neste README.
+6. **Arquivos 00_import_files.py e connect_api.py:** Fazem parte dos artefatos do Projeto 2.
 
 A organização para o desenvolvimento deste desafio foi totalmente gerenciada no Trello em formato de tarefas. Cada tarefa representa uma user story, e dentro delas, temos verificações que representam as tarefas concluídas para aquela história.
 
